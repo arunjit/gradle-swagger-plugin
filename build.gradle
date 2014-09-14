@@ -6,6 +6,10 @@ apply plugin: 'idea'
 group = 'com.github.gradle-swagger'
 version = '1.0.2-SNAPSHOT'
 
+// The Gradle wrapper.
+task wrapper(type: Wrapper) {
+  gradleVersion = '2.1'
+}
 
 defaultTasks 'install'
 
@@ -37,13 +41,13 @@ ext {
     ]
 }
 
-tasks.withType(Compile) {
+tasks.withType(JavaCompile) {
     options.compilerArgs << "-Xlint:unchecked"
 }
 
 repositories {
     mavenLocal()
-    maven { url "http://repo.maven.apache.org/maven2" }
+    mavenCentral()
 }
 
 dependencies {
